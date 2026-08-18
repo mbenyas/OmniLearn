@@ -3,7 +3,10 @@ import h5py as h5
 import os
 from optparse import OptionParser
 import sys
+sys.path.append('/global/cfs/cdirs/m3246/mbenyas/OmniLearn/scripts')
 import utils
+
+# run convert_lhco.py before this script
 
 parser = OptionParser(usage="%prog [opt]  inputFiles")
 parser.add_option("--folder", type="string", default="/pscratch/sd/v/vmikuni/PET/", help="Folder containing input files")
@@ -11,8 +14,11 @@ parser.add_option("--folder", type="string", default="/pscratch/sd/v/vmikuni/PET
 
 (flags, args) = parser.parse_args()
 
-bkg = utils.LHCODataLoader(os.path.join(flags.folder,'LHCO','processed_data_background_rel.h5'))
-signal = utils.LHCODataLoader(os.path.join(flags.folder,'LHCO','processed_data_signal_rel.h5'))
+#bkg = utils.LHCODataLoader(os.path.join(flags.folder,'LHCO','processed_data_background_rel.h5'))
+bkg = utils.LHCODataLoader(os.path.join(flags.folder,'LHCO','processed_data_background_rel_new.h5'))
+
+#signal = utils.LHCODataLoader(os.path.join(flags.folder,'LHCO','processed_data_signal_rel.h5'))
+signal = utils.LHCODataLoader(os.path.join(flags.folder,'LHCO','processed_data_signal_rel_new.h5'))
 
 samples = {
     'background':bkg,

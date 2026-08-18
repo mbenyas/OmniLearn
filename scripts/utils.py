@@ -9,9 +9,9 @@ import random
 import itertools
 import pickle, copy
 from scipy.stats import norm
-import horovod.tensorflow.keras as hvd
 
 def setup_gpus():
+    import horovod.tensorflow.keras as hvd
     hvd.init()
     gpus = tf.config.experimental.list_physical_devices('GPU')
     for gpu in gpus:
